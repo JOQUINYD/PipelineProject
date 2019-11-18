@@ -30,20 +30,24 @@ SOURCES += \
     ThreadEtapa.cpp \
     main.cpp \
     mainwindow.cpp \
-    ventanaetapa.cpp
+    ventanaetapa.cpp \
+    ventanaprincipal.cpp
 
 HEADERS += \
     DataBase.h \
+    EtapaConf.h \
     Includes.h \
     Producto.h \
     TemplateQueue.h \
     ThreadEtapa.h \
     mainwindow.h \
-    ventanaetapa.h
+    ventanaetapa.h \
+    ventanaprincipal.h
 
 FORMS += \
     mainwindow.ui \
-    ventanaetapa.ui
+    ventanaetapa.ui \
+    ventanaprincipal.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/Images">
         <file>linea.jpg</file>
+        <file>btnStartIMG.png</file>
     </qresource>
 </RCC>
