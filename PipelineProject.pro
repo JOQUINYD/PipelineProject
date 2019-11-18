@@ -26,6 +26,7 @@ NASM_SOURCES = test.asm
 
 SOURCES += \
     DataBase.cpp \
+    EtapaConf.cpp \
     Producto.cpp \
     ThreadEtapa.cpp \
     main.cpp \

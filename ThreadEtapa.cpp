@@ -1,6 +1,7 @@
 #include "ThreadEtapa.h"
 
-void ThreadEtapa::__init__(DataBase *_dataBase, int _numEtapa){
+void ThreadEtapa::__init__(DataBase *_dataBase, EtapaConf * _etapa){
     dataBase = _dataBase;
-    numEtapa = _numEtapa;
+    etapa = _etapa;
+    queue = dataBase->colasDeEtapas.takeAt(etapa->id);
 }

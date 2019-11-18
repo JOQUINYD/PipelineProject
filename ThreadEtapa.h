@@ -4,16 +4,16 @@
 #endif // THREADETAPA_H
 #include "Includes.h"
 #include "DataBase.h"
+#include "EtapaConf.h"
 
 class ThreadEtapa : public QThread
 {
 public:
     DataBase * dataBase;
-    int numEtapa;
+    Queue<Producto*> * queue;
+    EtapaConf * etapa;
 
     ThreadEtapa();
-    void __init__(DataBase * _dataBase, int _numEtapa);
+    void __init__(DataBase * _dataBase, EtapaConf * _etapa);
     void run();
-    void asignarClientes();
-    void printOcupadas(int cantMesas);
 };
