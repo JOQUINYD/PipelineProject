@@ -9,11 +9,15 @@ class ThreadEtapa : public QThread
 {
 public:
     DataBase * dataBase;
-    int numEtapa;
+    Queue<Producto*> * queue;
+    Queue<Producto*> * nextQueue;
+    EtapaConf * etapa;
+    EtapaConf * nextEtapa;
+    QListWidget * lwProducts;
 
     ThreadEtapa();
-    void __init__(DataBase * _dataBase, int _numEtapa);
+    void __init__(DataBase * _dataBase, EtapaConf * _etapa, QListWidget * _lwProducts);
     void run();
-    void asignarClientes();
-    void printOcupadas(int cantMesas);
+    void setNextQueue();
+    void setNextEtapa();
 };

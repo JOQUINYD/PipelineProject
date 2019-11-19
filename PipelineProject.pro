@@ -22,10 +22,13 @@ nasm.output = ${QMAKE_FILE_BASE}.o
 nasm.commands = nasm $$NASMEXTRAFLAGS -o ${QMAKE_FILE_BASE}.o ${QMAKE_FILE_NAME}
 nasm.input = NASM_SOURCES
 
-NASM_SOURCES = test.asm
+NASM_SOURCES += \
+    test.asm
+
 
 SOURCES += \
     DataBase.cpp \
+    EtapaConf.cpp \
     Producto.cpp \
     ThreadEtapa.cpp \
     main.cpp \
@@ -35,6 +38,7 @@ SOURCES += \
 
 HEADERS += \
     DataBase.h \
+    EstadoProducto.h \
     EtapaConf.h \
     Includes.h \
     Producto.h \
@@ -49,13 +53,16 @@ FORMS += \
     ventanaetapa.ui \
     ventanaprincipal.ui
 
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    test.asm
+    random.asm \
+    test.asm \
+    timeWait.asm
 
 RESOURCES += \
     Resources.qrc
