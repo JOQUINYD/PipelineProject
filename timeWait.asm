@@ -1,16 +1,21 @@
-global _start
-
 section .data
 
-    timespec:
-        tv_sec  dq 1
-        tv_nsec dq 200000000
+  timeval:
+    tv_sec  dd 0
+    tv_usec dd 0
 
 section .text
 
-    _start:
-        mov     rax, 35
-        mov     rdi, timespec
-        xor     rsi, rsi
-        syscall
-        ...
+global  _start1
+
+_start1:
+
+  ; Sleep for 5 seconds and 0 nanoseconds
+  mov dword [tv_sec], 0
+  mov dword [tv_usec], 521000000
+  mov rax, 162
+  mov rbx, timeval
+  mov rcx, 0
+  syscall
+
+
