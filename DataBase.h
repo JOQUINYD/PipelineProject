@@ -14,6 +14,7 @@ struct DataBase{
     int maxRetrasoCor;
     QList<Queue<Producto*>*> colasDeEtapas;
     QList<EtapaConf*> etapas;
+    QList<Producto*> productosIngresados;
 
     DataBase(int _cantEtapas, int _unidadTiempo, int _maxRetrasoDes, int _maxRetrasoCor, int margenDeError){
 

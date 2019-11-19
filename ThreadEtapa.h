@@ -4,7 +4,6 @@
 #endif // THREADETAPA_H
 #include "Includes.h"
 #include "DataBase.h"
-#include "EtapaConf.h"
 
 class ThreadEtapa : public QThread
 {
