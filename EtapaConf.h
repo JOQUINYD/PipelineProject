@@ -12,8 +12,9 @@ struct EtapaConf{
     QString name;
     int id;
     int probError;
+    int maxCola;
 
-    EtapaConf(int _id, int _probError, QString _name){
+    EtapaConf(int _id, int _probError, QString _name, int _maxCola){
         this->id = _id;
         this->probError = _probError;
         this->name = _name;
@@ -21,6 +22,7 @@ struct EtapaConf{
         detenido = false;
         error = false;
         desecho = false;
+        maxCola = _maxCola;
     }
 
     void setName(QString _name);
@@ -28,4 +30,5 @@ struct EtapaConf{
     void setDetenido(bool _detenido);
     void setError(bool _error);
     void setDesecho(bool _desecho);
+    void setMaxCola(int max);
 };

@@ -2,5 +2,7 @@
     <qresource prefix="/Images">
         <file>linea.jpg</file>
         <file>btnStartIMG.png</file>
+        <file>lineaIMG.png</file>
+        <file>roboticArmIMG.png</file>
     </qresource>
 </RCC>

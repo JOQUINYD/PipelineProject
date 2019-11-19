@@ -20,3 +20,7 @@ void EtapaConf::setDetenido(bool _detenido){
 void EtapaConf::setProbError(int _probError){
     this->probError = _probError;
 }
+
+void EtapaConf::setMaxCola(int max){
+    this->maxCola = max;
+}
