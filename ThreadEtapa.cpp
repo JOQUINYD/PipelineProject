@@ -31,6 +31,7 @@ void ThreadEtapa::run(){
                     queue->mutex.lock();
                     prodAc = queue->dequeue();
                     queue->mutex.unlock();
+                    prodAc->partes.at(etapa->id)->espera = false;
                     etapa->decEnCola();
                     //qDebug() << "Producto #" + QString::number(prodAc->id) + " iniciando etapa";
                     lwProducts->addItem(dataBase->productName + " #" + QString::number(prodAc->id) + " iniciando etapa");
@@ -73,13 +74,21 @@ void ThreadEtapa::run(){
                         if(nextEtapa != nullptr){
                             if(nextEtapa->enCola < nextEtapa->maxCola){
                                 lwProducts->addItem(dataBase->productName + " #" + QString::number(prodAc->id) + " hacia siguiente etapa");
+                                nextQueue->mutex.lock();
                                 nextEtapa->incEnCola();
+                                prodAc->partes.at(etapa->id)->exito = true;
+                                prodAc->partes.at(nextEtapa->id)->espera = true;
                                 nextQueue->queue(prodAc);
+                                nextQueue->mutex.unlock();
                                 prodAc = nullptr;
                             }
                         }
                         else{
                             prodAc->terminado = true;
+                            prodAc->partes.at(etapa->id)->exito = true;
+
+
+
                             lwProducts->addItem(dataBase->productName + " #" + QString::number(prodAc->id) + " terminado de producir");
                             prodAc = nullptr;
                         }

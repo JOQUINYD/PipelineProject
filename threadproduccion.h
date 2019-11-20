@@ -1,7 +1,6 @@
 #ifndef THREADPRODUCCION_H
 #define THREADPRODUCCION_H
 
-
 #include "Includes.h"
 #include "DataBase.h"
 

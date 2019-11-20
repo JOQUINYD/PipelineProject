@@ -7,6 +7,10 @@ VentanaPrincipal::VentanaPrincipal(QWidget *parent, DataBase * _dataBase) :
 {
     ui->setupUi(this);
     dataBase = _dataBase;
+    histograma = new VentanaHistograma(this, dataBase);
+    ThreadHistograma * threadHistogram = new ThreadHistograma();
+    threadHistogram->__init__(dataBase,histograma);
+    threadHistogram->start();
     ui->spSelecEtapa->setMaximum(dataBase->cantEtapas);
 }
 
@@ -31,4 +35,10 @@ void VentanaPrincipal::on_btnGenerarRep_clicked()
     ui->txtProductsFin->setText(QString::number(prodFin));
     ui->txtProductsError->setText(QString::number(prodError));
     ui->txtProductsDeten->setText(QString::number(prodDet));
+}
+
+void VentanaPrincipal::on_btnHistograma_clicked()
+{
+    //histograma->actualizarColumnas();
+    histograma->show();
 }

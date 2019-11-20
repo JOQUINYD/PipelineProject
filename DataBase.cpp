@@ -15,6 +15,9 @@ void DataBase::changeEtapaMaxCola(int i, int max){
 void DataBase::detenerPorDesecho(int numEtapa, int idProduct){
     for(int i = numEtapa+1; i < cantEtapas; i++){
         EtapaConf * tmp = etapas.at(i);
+        if(tmp->pause){
+            break;
+        }
         tmp->mutex.lock();
         if(!tmp->detenido){
             tmp->setDetenido(true);
@@ -28,6 +31,9 @@ void DataBase::detenerPorDesecho(int numEtapa, int idProduct){
 void DataBase::reanudarPorDesecho(int numEtapa, int retraso){
     for(int i = numEtapa; i < cantEtapas; i++){
         EtapaConf * tmp = etapas.at(i);
+        if(tmp->pause){
+            break;
+        }
         tmp->mutex.lock();
         if(tmp->detenido){
             lwEtapasError.at(i)->addItem("Etapa reanudada luego de " + QString::number(retraso) + " unidades de tiempo");

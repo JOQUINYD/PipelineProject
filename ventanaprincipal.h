@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "ventanaetapa.h"
+#include "threadhistograma.h"
 
 namespace Ui {
 class VentanaPrincipal;
@@ -22,9 +23,12 @@ private slots:
 
     void on_btnGenerarRep_clicked();
 
+    void on_btnHistograma_clicked();
+
 private:
     Ui::VentanaPrincipal *ui;
     DataBase * dataBase;
+    VentanaHistograma * histograma;
 };
 
 #endif // VENTANAPRINCIPAL_H

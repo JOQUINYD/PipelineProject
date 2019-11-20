@@ -36,8 +36,10 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     threadcontador.cpp \
+    threadhistograma.cpp \
     threadproduccion.cpp \
     ventanaetapa.cpp \
+    ventanahistograma.cpp \
     ventanaprincipal.cpp
 
 HEADERS += \
@@ -50,13 +52,16 @@ HEADERS += \
     ThreadEtapa.h \
     mainwindow.h \
     threadcontador.h \
+    threadhistograma.h \
     threadproduccion.h \
     ventanaetapa.h \
+    ventanahistograma.h \
     ventanaprincipal.h
 
 FORMS += \
     mainwindow.ui \
     ventanaetapa.ui \
+    ventanahistograma.ui \
     ventanaprincipal.ui
 
 

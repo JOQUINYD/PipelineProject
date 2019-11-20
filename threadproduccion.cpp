@@ -37,7 +37,9 @@ void ThreadProduccion::run(){
                 if(!myQueue->isEmpty() && nextEtapa->enCola < nextEtapa->maxCola){
                     nextEtapa->incEnCola();
                     nextQueue->mutex.lock();
-                    nextQueue->queue(myQueue->dequeue());
+                    Producto * prodEnv = myQueue->dequeue();
+                    prodEnv->partes.at(0)->espera = true;
+                    nextQueue->queue(prodEnv);
                     nextQueue->mutex.unlock();
                     cantProd--;
                 }
