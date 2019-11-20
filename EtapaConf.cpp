@@ -5,8 +5,8 @@ void EtapaConf::setName(QString _name){
     this->name = _name;
 }
 
-void EtapaConf::setError(bool _error){
-    this->error = _error;
+void EtapaConf::setCorrecion(bool _correcion){
+    this->correcion = _correcion;
 }
 
 void EtapaConf::setDesecho(bool _desecho){
@@ -23,4 +23,12 @@ void EtapaConf::setProbError(int _probError){
 
 void EtapaConf::setMaxCola(int max){
     this->maxCola = max;
+}
+
+void EtapaConf::incEnCola(){
+    this->enCola++;
+}
+
+void EtapaConf::decEnCola(){
+    this->enCola--;
 }

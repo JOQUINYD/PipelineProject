@@ -1,18 +1,18 @@
 #ifndef ETAPACONF_H
 #define ETAPACONF_H
 
-#endif // ETAPACONF_H
 #include "Includes.h"
 
 struct EtapaConf{
     bool running;
     bool detenido;
-    bool error;
+    bool correcion;
     bool desecho;
     QString name;
     int id;
     int probError;
     int maxCola;
+    int enCola;
 
     EtapaConf(int _id, int _probError, QString _name, int _maxCola){
         this->id = _id;
@@ -20,15 +20,20 @@ struct EtapaConf{
         this->name = _name;
         running = true;
         detenido = false;
-        error = false;
+        correcion = false;
         desecho = false;
         maxCola = _maxCola;
+        enCola = 0;
     }
 
     void setName(QString _name);
     void setProbError(int _probError);
     void setDetenido(bool _detenido);
-    void setError(bool _error);
+    void setCorrecion(bool _correcion);
     void setDesecho(bool _desecho);
     void setMaxCola(int max);
+    void incEnCola();
+    void decEnCola();
 };
+
+#endif // ETAPACONF_H

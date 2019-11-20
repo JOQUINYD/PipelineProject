@@ -23,7 +23,9 @@ nasm.commands = nasm $$NASMEXTRAFLAGS -o ${QMAKE_FILE_BASE}.o ${QMAKE_FILE_NAME}
 nasm.input = NASM_SOURCES
 
 NASM_SOURCES += \
-    test.asm
+    test.asm \
+    random.asm \
+    determProb.asm
 
 
 SOURCES += \
@@ -33,6 +35,8 @@ SOURCES += \
     ThreadEtapa.cpp \
     main.cpp \
     mainwindow.cpp \
+    threadcontador.cpp \
+    threadproduccion.cpp \
     ventanaetapa.cpp \
     ventanaprincipal.cpp
 
@@ -45,6 +49,8 @@ HEADERS += \
     TemplateQueue.h \
     ThreadEtapa.h \
     mainwindow.h \
+    threadcontador.h \
+    threadproduccion.h \
     ventanaetapa.h \
     ventanaprincipal.h
 
@@ -60,6 +66,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    determProb.asm \
     random.asm \
     test.asm \
     timeWait.asm

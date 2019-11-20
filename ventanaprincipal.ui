@@ -101,7 +101,7 @@ border-image: url(:/Images/lineaIMG.png);</string>
       <string>Generar reporte</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -170,7 +170,7 @@ border-image: url(:/Images/lineaIMG.png);</string>
      </layout>
     </widget>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -188,7 +188,7 @@ border-image: url(:/Images/lineaIMG.png);</string>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QSpinBox" name="spinBox">
+      <widget class="QSpinBox" name="spSelecEtapa">
        <property name="minimum">
         <number>1</number>
        </property>
