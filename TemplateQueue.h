@@ -1,7 +1,6 @@
 #ifndef TEMPLATEQUEUE_H
 #define TEMPLATEQUEUE_H
 
-#endif // TEMPLATEQUEUE_H
 
 #include <mutex>
 
@@ -81,3 +80,5 @@ template <typename T> struct Queue
     }
 
 };
+
+#endif // TEMPLATEQUEUE_H

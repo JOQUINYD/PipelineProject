@@ -1,7 +1,6 @@
 #ifndef INCLUDES_H
 #define INCLUDES_H
 
-#endif // INCLUDES_H
 
 #include <QtGlobal>
 #include <QtCore>
@@ -10,3 +9,5 @@
 #include <qstring.h>
 #include <QRandomGenerator64>
 #include "QListWidget"
+
+#endif // INCLUDES_H

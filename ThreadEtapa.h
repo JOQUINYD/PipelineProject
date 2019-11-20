@@ -1,7 +1,6 @@
 #ifndef THREADETAPA_H
 #define THREADETAPA_H
 
-#endif // THREADETAPA_H
 #include "Includes.h"
 #include "DataBase.h"
 
@@ -21,3 +20,5 @@ public:
     void setNextQueue();
     void setNextEtapa();
 };
+
+#endif // THREADETAPA_H

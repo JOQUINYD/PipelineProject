@@ -1,7 +1,6 @@
 #ifndef ESTADOPRODUCTO_H
 #define ESTADOPRODUCTO_H
 
-#endif // ESTADOPRODUCTO_H
 
 struct EstadoProducto{
     bool error;
@@ -14,3 +13,4 @@ struct EstadoProducto{
         etapaOcurrio = _etapaOcurrio;
     }
 };
+#endif // ESTADOPRODUCTO_H

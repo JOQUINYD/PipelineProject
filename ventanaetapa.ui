@@ -34,10 +34,10 @@ border-image: url(:/Images/roboticArmIMG.png);</string>
    <widget class="QListWidget" name="lwProductos">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>230</y>
-      <width>211</width>
-      <height>171</height>
+      <x>200</x>
+      <y>220</y>
+      <width>351</width>
+      <height>181</height>
      </rect>
     </property>
    </widget>

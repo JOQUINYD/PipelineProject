@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include "ventanaprincipal.h"
-#include "DataBase.h"
+#include "ventanaetapa.h"
+#include "ThreadEtapa.h"
+#include "threadproduccion.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,6 +29,8 @@ private slots:
     void on_btnModMargen_clicked();
 
     void on_btnModMaxCola_clicked();
+
+    void on_spSelecEtapa_valueChanged(int arg1);
 
 private:
     Ui::MainWindow *ui;
