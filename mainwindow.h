@@ -6,6 +6,7 @@
 #include "ventanaetapa.h"
 #include "ThreadEtapa.h"
 #include "threadproduccion.h"
+#include "threadcontador.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

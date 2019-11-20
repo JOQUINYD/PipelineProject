@@ -4,5 +4,7 @@
         <file>btnStartIMG.png</file>
         <file>lineaIMG.png</file>
         <file>roboticArmIMG.png</file>
+        <file>offSwitch.png</file>
+        <file>onSwitch.png</file>
     </qresource>
 </RCC>

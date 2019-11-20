@@ -10,10 +10,12 @@ struct Producto{
     int parteActual;
     bool terminado;
     int id;
+    bool conError;
     QList<EstadoProducto*> partes;
 
     Producto(int _cantPartes, int _id){
         id = _id;
+        conError = terminado = false;
         cantPartes = _cantPartes;
         parteActual = 0;
         for (int i = 0; i < cantPartes; i++) {

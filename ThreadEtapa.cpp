@@ -22,8 +22,8 @@ void ThreadEtapa::__init__(DataBase *_dataBase, EtapaConf * _etapa, QListWidget 
 
 void ThreadEtapa::run(){
     Producto * prodAc = nullptr;
-    while(etapa->running){
-        while(!etapa->detenido){
+    while(dataBase->running){
+        while(!etapa->detenido && !etapa->pause){
             //qDebug() << "Soy etapa " << etapa->id+1;
             if(prodAc == nullptr){
                 if(etapa->probError != 100 && !queue->isEmpty()){
@@ -41,6 +41,7 @@ void ThreadEtapa::run(){
 
                         if(ocurreError == 1){
 
+                            prodAc->conError = true;
                             int probTipoError = _randomGenerator(0,100);
                             int tipo = _determProb(probTipoError,50);
 

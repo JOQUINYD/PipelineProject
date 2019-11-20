@@ -16,6 +16,9 @@ public:
     explicit VentanaEtapa(QWidget *parent = nullptr, EtapaConf * _myEtapa = nullptr, DataBase * _dataBase = nullptr);
     ~VentanaEtapa();
 
+private slots:
+    void on_btnDetener_clicked();
+
 private:
     Ui::VentanaEtapa *ui;
     EtapaConf * myEtapa;

@@ -20,6 +20,8 @@ public:
 private slots:
     void on_btnSelecEtapa_clicked();
 
+    void on_btnGenerarRep_clicked();
+
 private:
     Ui::VentanaPrincipal *ui;
     DataBase * dataBase;
