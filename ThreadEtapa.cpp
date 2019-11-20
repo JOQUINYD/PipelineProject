@@ -51,6 +51,8 @@ void ThreadEtapa::run(){
                                 retraso *= dataBase->unidadTiempo;
                                 lwProducts->addItem("Etapa detenida por correcion de " + dataBase->productName + " #" + QString::number(prodAc->id));
                                 msleep(retraso);
+                                prodAc->partes.at(etapa->id)->error = true;
+                                prodAc->partes.at(etapa->id)->corregido = true;
                             }
                             // tipo != 1 significa que se desecha el producto
                             else{
@@ -61,21 +63,26 @@ void ThreadEtapa::run(){
                                 lwProducts->addItem("Etapa detenida por desecho de " + dataBase->productName + " #" + QString::number(prodAc->id));
                                 msleep(retraso);
                                 dataBase->reanudarPorDesecho(etapa->id,ret);
+                                prodAc->partes.at(etapa->id)->error = true;
+                                prodAc->partes.at(etapa->id)->desechado = true;
+                                prodAc = nullptr;
                             }
                         }
                     }
-                    if(nextEtapa != nullptr){
-                        if(nextEtapa->enCola < nextEtapa->maxCola){
-                            lwProducts->addItem(dataBase->productName + " #" + QString::number(prodAc->id) + " hacia siguiente etapa");
-                            nextEtapa->incEnCola();
-                            nextQueue->queue(prodAc);
+                    if(prodAc != nullptr){
+                        if(nextEtapa != nullptr){
+                            if(nextEtapa->enCola < nextEtapa->maxCola){
+                                lwProducts->addItem(dataBase->productName + " #" + QString::number(prodAc->id) + " hacia siguiente etapa");
+                                nextEtapa->incEnCola();
+                                nextQueue->queue(prodAc);
+                                prodAc = nullptr;
+                            }
+                        }
+                        else{
+                            prodAc->terminado = true;
+                            lwProducts->addItem(dataBase->productName + " #" + QString::number(prodAc->id) + " terminado de producir");
                             prodAc = nullptr;
                         }
-                    }
-                    else{
-                        prodAc->terminado = true;
-                        lwProducts->addItem(dataBase->productName + " #" + QString::number(prodAc->id) + " terminado de producir");
-                        prodAc = nullptr;
                     }
                 }
             }
