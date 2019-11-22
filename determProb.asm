@@ -5,7 +5,7 @@ global _determProb
 _determProb:
     mov eax,edi
     cmp eax,esi
-    jg  noOcurre
+    jge  noOcurre
     mov eax,1   ; si eax = 1 entonces ocurre la probabilidad
     ret
 

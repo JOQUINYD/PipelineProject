@@ -46,10 +46,10 @@ void ThreadEtapa::run(){
 
                             prodAc->conError = true;
                             int probTipoError = _randomGenerator(0,100);
-                            int tipo = _determProb(probTipoError,50);
+                            int tipo = _determProb(probTipoError,etapa->probDesecho);
 
-                            // tipo == 1 significa que se corregira el producto
-                            if(tipo == 1){
+                            // tipo != 1 significa que se corregira el producto
+                            if(tipo != 1){
                                 int retraso = _randomGenerator(1,dataBase->maxRetrasoCor);
                                 retraso *= dataBase->unidadTiempo;
                                 lwProducts->addItem("Etapa detenida por correcion de " + dataBase->productName + " #" + QString::number(prodAc->id));
@@ -57,7 +57,7 @@ void ThreadEtapa::run(){
                                 prodAc->partes.at(etapa->id)->error = true;
                                 prodAc->partes.at(etapa->id)->corregido = true;
                             }
-                            // tipo != 1 significa que se desecha el producto
+                            // tipo == 1 significa que se desecha el producto
                             else{
                                 int retraso = _randomGenerator(1,dataBase->maxRetrasoDes);
                                 int ret = retraso;

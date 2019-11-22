@@ -12,11 +12,12 @@ struct EtapaConf{
     QString name;
     int id;
     int probError;
+    int probDesecho;
     int maxCola;
     int enCola;
     std::mutex mutex;
 
-    EtapaConf(int _id, int _probError, QString _name, int _maxCola){
+    EtapaConf(int _id, int _probError, QString _name, int _maxCola, int _probDesecho){
         this->id = _id;
         this->probError = _probError;
         this->name = _name;
@@ -27,6 +28,7 @@ struct EtapaConf{
         pause = false;
         maxCola = _maxCola;
         enCola = 0;
+        probDesecho = _probDesecho;
     }
 
     void setName(QString _name);

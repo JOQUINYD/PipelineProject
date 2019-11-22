@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->dataBase = new DataBase(5,1000,1,1,20,"Producto general",100);
+    this->dataBase = new DataBase(5,1000,1,1,20,"Producto general",100, 50);
     ui->spSelecEtapa->setMaximum(5);
 }
 
@@ -48,8 +48,9 @@ void MainWindow::on_btnConfirm_clicked()
     int margenError = ui->spErrorGlobal->value();
     QString productName = ui->txtProductName->text();
     int maxCola = ui->spMaxColaGlob->value();
+    int probDesecho = ui->spProbDesCor->value();
 
-    this->dataBase = new DataBase(cantEtapas,unidad,maxRetDes,maxRetCor,margenError,productName,maxCola);
+    this->dataBase = new DataBase(cantEtapas,unidad,maxRetDes,maxRetCor,margenError,productName,maxCola,probDesecho);
     ui->spSelecEtapa->setMaximum(cantEtapas);
 }
 
@@ -80,4 +81,13 @@ void MainWindow::on_spSelecEtapa_valueChanged(int arg1)
     ui->txtEtapaNewName->setText(tmp->name);
     ui->spMargenErrorLocal->setValue(tmp->probError);
     ui->spMaxColaLoc->setValue(tmp->maxCola);
+}
+
+
+
+void MainWindow::on_btnChangeProbDesCor_clicked()
+{
+    int numEtapa = ui->spSelecEtapa->value() - 1;
+    int probDes = ui->spProbDesCorLocal->value();
+    this->dataBase->changeEtapaProbDesecho(numEtapa,probDes);
 }
