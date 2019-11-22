@@ -6,6 +6,7 @@
 struct EtapaConf{
     bool running;
     bool detenido;
+    bool pause;
     bool correcion;
     bool desecho;
     QString name;
@@ -13,6 +14,7 @@ struct EtapaConf{
     int probError;
     int maxCola;
     int enCola;
+    std::mutex mutex;
 
     EtapaConf(int _id, int _probError, QString _name, int _maxCola){
         this->id = _id;
@@ -22,6 +24,7 @@ struct EtapaConf{
         detenido = false;
         correcion = false;
         desecho = false;
+        pause = false;
         maxCola = _maxCola;
         enCola = 0;
     }

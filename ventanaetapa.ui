@@ -34,9 +34,9 @@ border-image: url(:/Images/roboticArmIMG.png);</string>
    <widget class="QListWidget" name="lwProductos">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>170</x>
       <y>220</y>
-      <width>351</width>
+      <width>401</width>
       <height>181</height>
      </rect>
     </property>
@@ -44,14 +44,40 @@ border-image: url(:/Images/roboticArmIMG.png);</string>
    <widget class="QPushButton" name="btnDetener">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>420</y>
+      <x>10</x>
+      <y>380</y>
       <width>101</width>
       <height>41</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#btnDetener{
+background-color:transparent;
+	border-image: url(:/Images/onSwitch.png);
+background:none;
+border:none;
+background-repeat:none;
+}
+#btnDetener:checked
+{
+	border-image: url(:/Images/offSwitch.png);
+} </string>
+    </property>
     <property name="text">
-     <string>Detener</string>
+     <string/>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="lwErrores">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>410</y>
+      <width>401</width>
+      <height>61</height>
+     </rect>
     </property>
    </widget>
   </widget>

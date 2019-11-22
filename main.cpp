@@ -17,6 +17,9 @@ int main(int argc, char *argv[])
     w.show();
     qDebug() << "Hola Mundo";
 
+    //VentanaHistograma his;
+    //his.show();
+
     int x = 125, y = 300;
     int value;
 

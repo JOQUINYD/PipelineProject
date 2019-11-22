@@ -22,25 +22,29 @@ void ThreadEtapa::__init__(DataBase *_dataBase, EtapaConf * _etapa, QListWidget 
 
 void ThreadEtapa::run(){
     Producto * prodAc = nullptr;
-    while(etapa->running){
-        while(!etapa->detenido){
+    while(dataBase->running){
+        while(!etapa->detenido && !etapa->pause){
             //qDebug() << "Soy etapa " << etapa->id+1;
-            if(prodAc == nullptr){
-                if(etapa->probError != 100 && !queue->isEmpty()){
 
+            if(etapa->probError != 100 && !queue->isEmpty()){
+
+                if(prodAc == nullptr){
                     queue->mutex.lock();
                     prodAc = queue->dequeue();
                     queue->mutex.unlock();
+                    prodAc->partes.at(etapa->id)->espera = false;
                     etapa->decEnCola();
                     //qDebug() << "Producto #" + QString::number(prodAc->id) + " iniciando etapa";
                     lwProducts->addItem(dataBase->productName + " #" + QString::number(prodAc->id) + " iniciando etapa");
-
+                }
+                if(prodAc != nullptr){
                     if(etapa->probError > 0){
                         int probaError = _randomGenerator(0,100);
                         int ocurreError = _determProb(probaError,etapa->probError);
 
                         if(ocurreError == 1){
 
+                            prodAc->conError = true;
                             int probTipoError = _randomGenerator(0,100);
                             int tipo = _determProb(probTipoError,50);
 
@@ -50,6 +54,8 @@ void ThreadEtapa::run(){
                                 retraso *= dataBase->unidadTiempo;
                                 lwProducts->addItem("Etapa detenida por correcion de " + dataBase->productName + " #" + QString::number(prodAc->id));
                                 msleep(retraso);
+                                prodAc->partes.at(etapa->id)->error = true;
+                                prodAc->partes.at(etapa->id)->corregido = true;
                             }
                             // tipo != 1 significa que se desecha el producto
                             else{
@@ -60,19 +66,29 @@ void ThreadEtapa::run(){
                                 lwProducts->addItem("Etapa detenida por desecho de " + dataBase->productName + " #" + QString::number(prodAc->id));
                                 msleep(retraso);
                                 dataBase->reanudarPorDesecho(etapa->id,ret);
+                                prodAc->partes.at(etapa->id)->error = true;
+                                prodAc->partes.at(etapa->id)->desechado = true;
+                                prodAc = nullptr;
                             }
                         }
                     }
+                }
+                if(prodAc != nullptr){
                     if(nextEtapa != nullptr){
                         if(nextEtapa->enCola < nextEtapa->maxCola){
                             lwProducts->addItem(dataBase->productName + " #" + QString::number(prodAc->id) + " hacia siguiente etapa");
+                            nextQueue->mutex.lock();
                             nextEtapa->incEnCola();
+                            prodAc->partes.at(etapa->id)->exito = true;
+                            prodAc->partes.at(nextEtapa->id)->espera = true;
                             nextQueue->queue(prodAc);
+                            nextQueue->mutex.unlock();
                             prodAc = nullptr;
                         }
                     }
                     else{
                         prodAc->terminado = true;
+                        prodAc->partes.at(etapa->id)->exito = true;
                         lwProducts->addItem(dataBase->productName + " #" + QString::number(prodAc->id) + " terminado de producir");
                         prodAc = nullptr;
                     }

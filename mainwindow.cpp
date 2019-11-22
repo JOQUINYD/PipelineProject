@@ -31,7 +31,10 @@ void MainWindow::on_btnStart_clicked()
     VentanaPrincipal * v =  new VentanaPrincipal(this,dataBase);
     v->ventanasEtapas = etapasView;
     ThreadProduccion * threadProd = new ThreadProduccion();
+    ThreadContador * threadCont = new ThreadContador();
+    threadCont->__init__(dataBase);
     threadProd->__init__(dataBase);
+    threadCont->start();
     threadProd->start();
     v->show();
 }
