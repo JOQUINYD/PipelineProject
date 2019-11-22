@@ -71,3 +71,8 @@ int DataBase::getProductosDetenidos(){
     }
     return cant;
 }
+
+
+void DataBase::changeEtapaProbDesecho(int i, int _probDes){
+    this->etapas.at(i)->probDesecho = _probDes;
+}

@@ -33,6 +33,9 @@ private slots:
 
     void on_spSelecEtapa_valueChanged(int arg1);
 
+
+    void on_btnChangeProbDesCor_clicked();
+
 private:
     Ui::MainWindow *ui;
     DataBase * dataBase;
