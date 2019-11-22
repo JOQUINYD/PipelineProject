@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1113</width>
-    <height>786</height>
+    <width>1450</width>
+    <height>940</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,16 +19,16 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1111</width>
-      <height>651</height>
+      <width>1451</width>
+      <height>771</height>
      </rect>
     </property>
    </widget>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>650</y>
+      <x>110</x>
+      <y>780</y>
       <width>641</width>
       <height>111</height>
      </rect>
@@ -133,8 +133,8 @@
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>650</y>
+      <x>870</x>
+      <y>780</y>
       <width>471</width>
       <height>111</height>
      </rect>
@@ -213,7 +213,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1113</width>
+     <width>1450</width>
      <height>22</height>
     </rect>
    </property>

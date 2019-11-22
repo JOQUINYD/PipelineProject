@@ -26,8 +26,8 @@ void ThreadProduccion::run(){
     int productId = 1;
     while(true){
         while (dataBase->produccion) {
-            qDebug() << "Soy produccion";
-            if(cantProd < 5000){
+            //qDebug() << "Soy produccion";
+            if(cantProd < 200){
                 cantProd++;
                 productId++;
                 Producto * newProduct = new Producto(dataBase->cantEtapas,productId);
