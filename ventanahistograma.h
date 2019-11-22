@@ -26,7 +26,6 @@ public:
     void agregarNuevasFilas();
 
 private slots:
-    void on_toolButton_clicked();
 
 private:
     Ui::VentanaHistograma *ui;

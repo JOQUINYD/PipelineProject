@@ -136,10 +136,3 @@ void VentanaHistograma::actualizarFilasProductos(){
     }
 }
 
-
-
-
-void VentanaHistograma::on_toolButton_clicked()
-{
-    actualizarColumnas();
-}
